@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block the_body %}
+
+    <h2>Game over!</h2>
+        <h3>
+           {{ message }}
+        </h3>
+
+        <p>
+            Computer has {{ computerPairs }} pairs.
+        </p>
+        <p>
+            You have {{ playerPairs }} pairs.
+        </p>
+
+        <h3>{{ messageC }}</h3>
+            {% for card in computerCards %}
+                
+            <img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+
+            {% endfor %}
+
+        <h3>{{ messageP }}</h3>
+
+            {% for card in cards %}
+            
+            <img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+
+            {% endfor %}
+
+{% endblock %}
