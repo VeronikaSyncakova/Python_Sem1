@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 
 {% block the_body %}
+    <div id="computerTurn">
+        <div id="textBox">
+            <h2>The computer has {{ n_computer }} cards</h2>
+                <p>Pairs: {{ computerPairs }}</p>
+        </div>
+        <br>
 
-    <h2>The computer has {{ n_computer }} cards</h2>
+            {% for _ in range(n_computer) %}
+                
+                <img src="/static/cards/back.png" style="width:10%;height:10%;">
 
-        {% for _ in range(n_computer) %}
-            
-            <img src="/static/cards/back.png" style="width:10%;height:10%;">
+            {% endfor %}
+    </div>
 
-        {% endfor %}
-
-    <h2>Here are your cards</h2>
-
-        {% for card in cards %}
+    <div id="playerTurn">
+        <div id="textBox">
+            <h2>It's your turn. Pick one of your cards</h2>
+                <p >Pairs: {{ playerPairs }}</p>
+        </div>
+        <br>
         
-        <a href="/select/{{ card[: card.find('_')] }}"><img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+            {% for card in cards %}
+            
+            <a href="/select/{{ card[: card.find('_')] }}"><img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
 
-        {% endfor %}
-
+            {% endfor %}
+    </div>
 
 {% endblock %}

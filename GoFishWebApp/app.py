@@ -37,24 +37,29 @@ def start():
         title="Welcome to GoFish for web!",
         cards=card_images,   # available in template as {{ cards }}
         n_computer=len(session["computer"]),   #available in the template as {{ n_computer }}
+        computerPairs=int(len(session["computer_pairs"])/2),
+        playerPairs=int(len(session["player_pairs"])/2)
         )
 
 @app.get("/select/<value>")
 def process_card_selection(value):
+    message=""
     found_it = False
     for n, card in enumerate(session["computer"]):
         if card.lower().startswith(value):
             found_it = n
             break
     if isinstance(found_it, bool):
-        flash("Go Fish!")
+        #flash("Go Fish!")
         session["player"].append(session["deck"].pop())
-        flash(f"You drew a {session["player"][-1]}.")
+        #flash(f"You drew a {session["player"][-1]}.")
+        message+="GoFish!\nYou drew a "+str(session["player"][-1])+"."
         ## checkEnd()
         ## if len(session["deck"]) == 0:
         ##      break
     else:
-        flash(f"Here is your card from the computer: {session["computer"][n]}.")
+        #flash(f"Here is your card from the computer: {session["computer"][n]}.")
+        message+="Here is your card: "+str(session["computer"][n])+"."
         session["player"].append(session["computer"].pop(n))
         
     session["player"], pairs = cards.identify_remove_pairs(session["player"])
@@ -79,6 +84,7 @@ def process_card_selection(value):
             title="The computer wants to know",
             value=the_value,
             cards=card_images,   # available in template as {{ cards }}
+            action_message=message
             )
     else:
         return checkEnd()
@@ -92,7 +98,7 @@ def process_picked_card(value):
         for n, card in enumerate(session["player"]):
                 if card.startswith(value.title()):
                     break
-        flash(f"DEBUG: The picked card was at location {n}")
+        #flash(f"DEBUG: The picked card was at location {n}")
         session["computer"].append(session["player"].pop(n))
     
     session["computer"], pairs = cards.identify_remove_pairs(session["computer"])
@@ -106,6 +112,8 @@ def process_picked_card(value):
             title="Keep playing!",
             cards=card_images,   # available in template as {{ cards }}
             n_computer=len(session["computer"]),   #available in the template as {{ n_computer }}
+            computerPairs=int(len(session["computer_pairs"])/2),
+            playerPairs=int(len(session["player_pairs"])/2)
             )
     else:
         return checkEnd()
@@ -114,41 +122,41 @@ def checkEnd():
     card_images=[card.lower().replace(" ","_") + ".png" for card in session["player"]]
     computer_images=[card.lower().replace(" ","_") + ".png" for card in session["computer"]]
     if len(session["deck"]) == 0:
-        flash("No cards in the deck! Draw.")
+        #flash("No cards in the deck! Draw.")
         return render_template(
             "endgame.html",
             title="Game over",
             message="No cards in the deck! Draw.",     # {{ message }}
             messageP="You had",
             messageC="Computer had",
-            computerPairs= len(session["computer_pairs"]),
-            playerPairs=len(session["player_pairs"]),
+            computerPairs= int(len(session["computer_pairs"])/2),
+            playerPairs=int(len(session["player_pairs"])/2),
             cards=card_images,
             computerCards=computer_images
         )
     if len(session["player"]) == 0:
-        flash("The Game is over. The player won.")
+        #flash("The Game is over. The player won.")
         return render_template(
             "endgame.html",
             title="Game over",
             message="Congrats! You won!",     # {{ message }}
             messageP="",     # {{ message }}
             messageC="Computer had",
-            computerPairs= len(session["computer_pairs"]),
-            playerPairs=len(session["player_pairs"]),
+            computerPairs= int(len(session["computer_pairs"])/2),
+            playerPairs=int(len(session["player_pairs"])/2),
             cards=card_images,
             computerCards=computer_images
         )
     if len(session["computer"]) == 0:
-        flash("The Game is over. The computer won.")
+        #flash("The Game is over. The computer won.")
         return render_template(
             "endgame.html",
             title="Game over",
             message="Good game. The computer won!",     # {{ message }}
             messageP="You had",
             messageC="",     # {{ message }}
-            computerPairs= len(session["computer_pairs"]),
-            playerPairs=len(session["player_pairs"]),
+            computerPairs= int(len(session["computer_pairs"])/2),
+            playerPairs=int(len(session["player_pairs"])/2),
             cards=card_images,
             computerCards=computer_images
         )

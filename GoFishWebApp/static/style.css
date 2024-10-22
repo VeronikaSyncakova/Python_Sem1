@@ -1,0 +1,39 @@
+img{
+    width:10%;
+    height:10%;
+    box-shadow: 10px 10px 5px rgb(78, 78, 78);
+}
+
+body{
+    text-align: center;
+    background-color: rgb(245, 229, 227);
+}
+
+#playerTurn{
+    background-color: rgb(206, 155, 151);
+    padding: 1em;
+    padding-bottom: 2em;
+}
+
+#computerTurn{
+    padding: 1em;
+    
+}
+
+#textBox{
+    display: inline-block;
+    align-content: left;
+    text-align:center;
+}
+
+#textBox p{
+    text-align:left;
+}
+
+
+/*
+rgb(239, 214, 209)
+rgb(214, 188, 186)
+rgb(175, 69, 70)
+rgb(99, 98, 98)
+*/
