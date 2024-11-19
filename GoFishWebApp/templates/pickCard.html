@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 {% block the_body %}
-    <h3> {{ action_message }}</h3>
+    <h3 id="goFishMessage"> {{ action_message }}</h3>
     <h2>Do you have a {{ value }}?</h2>
 
         {% for card in cards %}
         
-        <a href="/pick/{{ card[: card.find('_')] }}"><img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+        <a href="/pick/{{ card[: card.find('_')] }}"><img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
 
         {% endfor %}
-
+    
+    <div id="fakeCard">
         <h3>
-            <a href="/pick/0"> Go Fish! I don't have a {{ value }}.</a>
+            <a href="/pick/0"> Go Fish!<br>I don't have a {{ value }}.</a>
         </h3>
+    </div>
 
 {% endblock %}

@@ -1,12 +1,51 @@
 img{
     width:10%;
     height:10%;
-    box-shadow: 10px 10px 5px rgb(78, 78, 78);
+    box-shadow: 10px 10px 5px rgb(59, 59, 59);
+    transition:1s;
+    animation-name:example;
+    animation-duration:2s;
+    animation-timing-function: ease;
 }
+#playerCard:hover{
+    box-shadow: 10px 10px 5px rgb(175, 69, 70);
+    margin-bottom:1em;
+    margin-right:1em;
+}
+
+@keyframes example {
+    0%   {width:20%}
+    /*50%  { width:15%}*/
+    100% { width:10%}
+}
+
+#copmuterPairs{
+    position: absolute;
+    top:5%;
+    width:15%;
+    height:15%;
+}
+#copmuterPairs img{
+    width:20%;
+    height:40%;
+}
+
+#playerPairs{
+    position: absolute;
+    top:50%;
+    width:15%;
+    height:15%;
+}
+#playerPairs img{
+    width:20%;
+    height:40%;
+}
+
 
 body{
     text-align: center;
     background-color: rgb(245, 229, 227);
+    color:rgb(99, 98, 98);
 }
 
 #playerTurn{
@@ -17,7 +56,6 @@ body{
 
 #computerTurn{
     padding: 1em;
-    
 }
 
 #textBox{
@@ -28,6 +66,40 @@ body{
 
 #textBox p{
     text-align:left;
+}
+
+#fakeCard{
+    align-content: center;
+    margin-top:2em;
+    margin-left:45%;
+    margin-right:45%;
+    padding: 1em;
+    padding-bottom: 3em;
+    padding-top: 3em;
+    border-style:solid;
+    border-width: 2px;
+    border-radius: 10px;
+    background-color: rgb(175, 69, 70);
+    box-shadow: 10px 10px 5px rgb(99, 98, 98);
+    transition:1s;
+}
+#fakeCard a{
+    color: rgb(239, 214, 209);
+}
+#fakeCard:hover{
+    background-color: rgb(97, 39, 40);
+    box-shadow: 10px 10px 5px rgb(175, 69, 70);
+}
+
+#gameOver{
+    background-color: rgb(175, 69, 70);
+    color: rgb(239, 214, 209);
+    padding:2em;
+}
+#goFishMessage{
+    background-color: rgb(175, 69, 70);
+    color: rgb(239, 214, 209);
+    padding:1em;
 }
 
 

@@ -15,6 +15,14 @@
             {% endfor %}
     </div>
 
+    <div id="copmuterPairs">
+        {% for _ in range(computerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png">
+
+        {% endfor %}
+    </div>
+
     <div id="playerTurn">
         <div id="textBox">
             <h2>It's your turn. Pick one of your cards</h2>
@@ -24,9 +32,17 @@
         
             {% for card in cards %}
             
-            <a href="/select/{{ card[: card.find('_')] }}"><img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+            <a href="/select/{{ card[: card.find('_')] }}"><img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
 
             {% endfor %}
+    </div>
+
+    <div id="playerPairs">
+        {% for _ in range(playerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png">
+
+        {% endfor %}
     </div>
 
 {% endblock %}

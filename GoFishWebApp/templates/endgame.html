@@ -2,6 +2,7 @@
 
 {% block the_body %}
 
+<div id="gameOver">
     <h2>Game over!</h2>
         <h3>
            {{ message }}
@@ -13,7 +14,7 @@
         <p>
             You have {{ playerPairs }} pairs.
         </p>
-
+</div>
         <h3>{{ messageC }}</h3>
             {% for card in computerCards %}
                 
@@ -28,7 +29,9 @@
             <img src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
 
             {% endfor %}
-    
-    <h3><a href="/startgame">Play again!</a></h3>
+            
+    <div id="fakeCard">
+        <h3><a href="/startgame">Play again!</a></h3>
+    </div>
 
 {% endblock %}
