@@ -1,0 +1,43 @@
+<div id="body">
+    <div id="computerTurn">
+        <div id="textBox">
+                <h2>The computer has {{ n_computer }} cards {{ computer_massage }}</h2>
+                <p>Pairs: {{ computerPairs }}</p>
+        </div>
+        <br>
+
+            {% for _ in range(n_computer) %}
+                
+                <img src="/static/cards/back.png" style="animation-name: computerFish;">
+
+            {% endfor %}
+    </div>
+
+    <div id="copmuterPairs">
+        {% for _ in range(computerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png" style="animation-name: pairsChange;">
+
+        {% endfor %}
+    </div>
+
+    <div id="playerTurn">
+        <div id="textBox">
+            <h2>It's your turn. Pick one of your cards</h2>
+                <p >Pairs: {{ playerPairs }}</p>
+        </div>
+        <br>
+        
+            {% for card in cards %}
+                <img id="playerCard" src="/static/cards/{{ card }}" style="animation-name: none;" hx-get="/select/{{ card[: card.find('_')] }}" hx-target="#body" hx-swap="innerHTML">
+            {% endfor %}
+    </div>
+
+    <div id="playerPairs">
+        {% for _ in range(playerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png">
+
+        {% endfor %}
+    </div>
+    </div>

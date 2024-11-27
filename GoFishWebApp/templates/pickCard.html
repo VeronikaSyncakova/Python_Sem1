@@ -1,19 +1,52 @@
-{% extends "base.html" %}
+<!--{% extends "startgame.html" %}
 
-{% block the_body %}
-    <h3 id="goFishMessage"> {{ action_message }}</h3>
-    <h2>Do you have a {{ value }}?</h2>
+{% block the_body %} -->
+    <div id="computerTurn">
+        <div id="textBox">
+            {% for message in action_message %}
+                <h3 id="goFishMessage"> {{ message}} </h3>
+            {% endfor %} 
+        </div>
+        <br>
 
-        {% for card in cards %}
-        
-        <a href="/pick/{{ card[: card.find('_')] }}"><img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+            {% for _ in range(n_computer) %}
+                
+                <img src="/static/cards/back.png" >
 
-        {% endfor %}
-    
-    <div id="fakeCard">
-        <h3>
-            <a href="/pick/0"> Go Fish!<br>I don't have a {{ value }}.</a>
-        </h3>
+            {% endfor %}
     </div>
 
-{% endblock %}
+    <div id="copmuterPairs">
+        {% for _ in range(computerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png">
+
+        {% endfor %}
+    </div>
+
+    <!--{% for message in action_message %}
+        <h3 id="goFishMessage"> {{ message}} </h3>
+    {% endfor %} -->
+    <div id="playerTurn">
+        <h2>Do you have a {{ value }}?</h2>
+
+            {% for card in cards %}
+                <img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;" hx-get="/pick/{{ card[: card.find('_')] }}" hx-target="#body" hx-swap="innerHTML">
+            {% endfor %}
+        
+        <div id="fakeCard">
+            <h3 hx-get="/pick/0" hx-target="#body" hx-swap="innerHTML">
+                Go Fish!<br>I don't have a {{ value }}.
+            </h3>
+        </div>
+    </div>
+
+    <div id="playerPairs">
+        {% for _ in range(playerPairs) %}
+                
+            <img id="pairs" src="/static/cards/pairs.png" {{ style }}>
+
+        {% endfor %}
+    </div>
+
+<!--{% endblock %}-->

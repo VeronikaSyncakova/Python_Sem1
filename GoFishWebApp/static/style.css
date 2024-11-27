@@ -7,6 +7,13 @@ img{
     animation-duration:2s;
     animation-timing-function: ease;
 }
+
+#computerTurn img{
+    width:7%;
+    height:7%;
+    animation-name: none;
+}
+
 #playerCard:hover{
     box-shadow: 10px 10px 5px rgb(175, 69, 70);
     margin-bottom:1em;
@@ -14,9 +21,21 @@ img{
 }
 
 @keyframes example {
-    0%   {width:20%}
+    0%   {width:15%}
     /*50%  { width:15%}*/
     100% { width:10%}
+}
+
+@keyframes computerFish {
+    0%   {width:10%}
+    /*50%  { width:15%}*/
+    100% { width:7%}
+}
+
+@keyframes pairsChange {
+    0%   {width:0%; height:0%}
+    /*50%  { width:15%}*/
+    100% { width:20%; height:40%}
 }
 
 #copmuterPairs{
@@ -28,6 +47,7 @@ img{
 #copmuterPairs img{
     width:20%;
     height:40%;
+    animation-name:none;
 }
 
 #playerPairs{
@@ -39,6 +59,7 @@ img{
 #playerPairs img{
     width:20%;
     height:40%;
+    animation-name:none;
 }
 
 
@@ -74,14 +95,15 @@ body{
     margin-left:45%;
     margin-right:45%;
     padding: 1em;
-    padding-bottom: 3em;
-    padding-top: 3em;
+    padding-bottom: 1em;
+    padding-top: 1em;
     border-style:solid;
     border-width: 2px;
     border-radius: 10px;
     background-color: rgb(175, 69, 70);
     box-shadow: 10px 10px 5px rgb(99, 98, 98);
     transition:1s;
+    color: rgb(239, 214, 209);
 }
 #fakeCard a{
     color: rgb(239, 214, 209);
@@ -99,9 +121,31 @@ body{
 #goFishMessage{
     background-color: rgb(175, 69, 70);
     color: rgb(239, 214, 209);
-    padding:1em;
+    padding:0.5em;
 }
 
+table{
+    /*border: 1px solid;*/
+    align-content: center;
+    border-collapse: collapse;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+th, td{
+    text-align:left;
+    border-bottom: 1px solid;
+    padding:5px;
+}
+
+th{
+    background-color: rgb(175, 69, 70);
+    color:rgb(239, 214, 209);
+}
+
+tr:nth-child(even){
+    background-color:rgb(239, 214, 209);
+}
 
 /*
 rgb(239, 214, 209)

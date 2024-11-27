@@ -1,0 +1,28 @@
+<!--{% extends "register.html" %}-->
+
+<!--{% block the_body %}-->
+<table>
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Score</th>
+        <th>Date</th>
+    </tr>
+    {% for name, username, score, date, rank in table %}
+        <tr>
+            <td>{{ rank }}</td>
+            <td>{{ name }}</td>
+            <td>{{ username }}</td>
+            <td>{{ score }}</td>
+            <td>{{ date }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<!--<div id="fakeCard">
+    <h3><a href="/">New game</a></h3>
+</div>
+<div id="fakeCard">
+    <h3><a href="/startgame">Play again</a></h3>
+</div>-->
+<!--{% endblock %}-->

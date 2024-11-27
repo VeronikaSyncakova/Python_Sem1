@@ -1,0 +1,11 @@
+{% extends "login.html" %}
+
+{% block the_body %}
+    <form action="/input" method="post">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="fuser_name">Username</label>
+        <input type="text" id="fname" name="fuser_name"><br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

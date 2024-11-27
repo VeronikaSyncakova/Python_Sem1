@@ -33,5 +33,17 @@
     <div id="fakeCard">
         <h3><a href="/startgame">Play again!</a></h3>
     </div>
+    <div id="fakeCard">
+        <h3><a href="/">New game</a></h3>
+    </div>
+
+    <div id="leaderboard"></div>
+        <div id="fakeCard" class="fakeCardT">
+            <h3 hx-get="/leaderboard" hx-target=".fakeCardT" hx-swap="outerHTML"> <!--<a href="/leaderboard">Show leaderboard</a>-->
+                Show leaderboard
+            </h3>
+        </div>
+    </div>
+
 
 {% endblock %}

@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 
 {% block the_body %}
+    <!--
+    <form action="/username" method="post">
+        <label for="fuser_name">Username</label>
+        <input type="text" id="fname" name="fuser_name"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <button type="button" onclick="location.href='register'">Not registered? Register</button>
+    -->
+    <div id="body">
     <div id="computerTurn">
         <div id="textBox">
-            <h2>The computer has {{ n_computer }} cards</h2>
+                <h2>The computer has {{ n_computer }} cards {{ computer_massage }}</h2>
                 <p>Pairs: {{ computerPairs }}</p>
         </div>
         <br>
 
             {% for _ in range(n_computer) %}
                 
-                <img src="/static/cards/back.png" style="width:10%;height:10%;">
+                <img src="/static/cards/back.png" >
 
             {% endfor %}
     </div>
@@ -32,7 +41,9 @@
         
             {% for card in cards %}
             
-            <a href="/select/{{ card[: card.find('_')] }}"><img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;"></a>
+            <!--<a href="/select/{{ card[: card.find('_')] }}" > !-->
+                <img id="playerCard" src="/static/cards/{{ card }}" style="width:10%;height:10%;" hx-get="/select/{{ card[: card.find('_')] }}" hx-target="#body" hx-swap="innerHTML">
+            <!--</a>!-->
 
             {% endfor %}
     </div>
@@ -40,9 +51,9 @@
     <div id="playerPairs">
         {% for _ in range(playerPairs) %}
                 
-            <img id="pairs" src="/static/cards/pairs.png">
+            <img id="pairs" src="/static/cards/pairs.png" >
 
         {% endfor %}
     </div>
-
+    </div>
 {% endblock %}
